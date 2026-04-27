@@ -23,6 +23,9 @@ const caveat = Caveat({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_SITE_URL || "https://nowaylabs.com"
+  ),
   title: "No Way Labs — Research. Prototype. Ship.",
   description:
     "An R&D studio at the intersection of agentic AI and web3. We build the infrastructure, tools, and protocols that others will build on.",
@@ -30,7 +33,6 @@ export const metadata: Metadata = {
     title: "No Way Labs — Research. Prototype. Ship.",
     description:
       "An R&D studio at the intersection of agentic AI and web3.",
-    images: ["/og.png"],
     type: "website",
   },
   twitter: {
@@ -38,7 +40,6 @@ export const metadata: Metadata = {
     title: "No Way Labs",
     description:
       "An R&D studio at the intersection of agentic AI and web3.",
-    images: ["/og.png"],
   },
   icons: {
     icon: "/favicon.svg",
