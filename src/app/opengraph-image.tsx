@@ -1,22 +1,19 @@
 import { ImageResponse } from "next/og";
 
-export const runtime = "edge";
 export const alt = "No Way Labs — Research. Prototype. Ship.";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
 export default async function Image() {
-  const caveat = await fetch(
-    new URL(
-      "https://fonts.gstatic.com/s/caveat/v18/WnznHAc5bAfYB2QRah7pcpNvOx-pjfJ9SIKjYBxPigs.woff"
-    )
-  ).then((res) => res.arrayBuffer());
+  const caveatRes = await fetch(
+    "https://fonts.gstatic.com/s/caveat/v23/WnznHAc5bAfYB2QRah7pcpNvOx-pjRV6SII.ttf"
+  );
+  const caveat = await caveatRes.arrayBuffer();
 
-  const spaceGrotesk = await fetch(
-    new URL(
-      "https://fonts.gstatic.com/s/spacegrotesk/v16/V8mDoQDjQSkFtoMM3T6r8E7mPbF4Cw.woff"
-    )
-  ).then((res) => res.arrayBuffer());
+  const spaceGroteskRes = await fetch(
+    "https://fonts.gstatic.com/s/spacegrotesk/v22/V8mQoQDjQSkFtoMM3T6r8E7mF71Q-gOoraIAEj4PVksj.ttf"
+  );
+  const spaceGrotesk = await spaceGroteskRes.arrayBuffer();
 
   return new ImageResponse(
     (
@@ -56,6 +53,7 @@ export default async function Image() {
         <span
           style={{
             fontFamily: "Space Grotesk",
+            fontWeight: 700,
             fontSize: "18px",
             color: "#555555",
           }}
@@ -70,14 +68,14 @@ export default async function Image() {
         {
           name: "Caveat",
           data: caveat,
-          weight: 700,
-          style: "normal",
+          weight: 700 as const,
+          style: "normal" as const,
         },
         {
           name: "Space Grotesk",
           data: spaceGrotesk,
-          weight: 700,
-          style: "normal",
+          weight: 700 as const,
+          style: "normal" as const,
         },
       ],
     }
