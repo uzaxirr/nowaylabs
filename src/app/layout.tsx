@@ -24,7 +24,7 @@ const caveat = Caveat({
 
 export const metadata: Metadata = {
   metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL || "https://nowaylabs.com"
+    process.env.NEXT_PUBLIC_SITE_URL || "https://nowaylabs-production.up.railway.app"
   ),
   title: "No Way Labs — Research. Prototype. Ship.",
   description:
