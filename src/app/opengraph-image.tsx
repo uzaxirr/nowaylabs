@@ -6,6 +6,18 @@ export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
 export default async function Image() {
+  const caveat = await fetch(
+    new URL(
+      "https://fonts.gstatic.com/s/caveat/v18/WnznHAc5bAfYB2QRah7pcpNvOx-pjfJ9SIKjYBxPigs.woff"
+    )
+  ).then((res) => res.arrayBuffer());
+
+  const spaceGrotesk = await fetch(
+    new URL(
+      "https://fonts.gstatic.com/s/spacegrotesk/v16/V8mDoQDjQSkFtoMM3T6r8E7mPbF4Cw.woff"
+    )
+  ).then((res) => res.arrayBuffer());
+
   return new ImageResponse(
     (
       <div
@@ -22,9 +34,9 @@ export default async function Image() {
       >
         <span
           style={{
-            fontFamily: "serif",
-            fontStyle: "italic",
-            fontSize: "48px",
+            fontFamily: "Caveat",
+            fontWeight: 700,
+            fontSize: "56px",
             color: "#FFFFFF",
           }}
         >
@@ -32,7 +44,7 @@ export default async function Image() {
         </span>
         <span
           style={{
-            fontFamily: "sans-serif",
+            fontFamily: "Space Grotesk",
             fontWeight: 700,
             fontSize: "48px",
             color: "#FFFFFF",
@@ -43,7 +55,7 @@ export default async function Image() {
         </span>
         <span
           style={{
-            fontFamily: "sans-serif",
+            fontFamily: "Space Grotesk",
             fontSize: "18px",
             color: "#555555",
           }}
@@ -54,6 +66,20 @@ export default async function Image() {
     ),
     {
       ...size,
+      fonts: [
+        {
+          name: "Caveat",
+          data: caveat,
+          weight: 700,
+          style: "normal",
+        },
+        {
+          name: "Space Grotesk",
+          data: spaceGrotesk,
+          weight: 700,
+          style: "normal",
+        },
+      ],
     }
   );
 }
